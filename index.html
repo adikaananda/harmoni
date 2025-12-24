@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARMONI - Solusi Krisis Sampah Bali Berbasis Tri Hita Karana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #38500B;
+            --secondary: #AAD400;
+            --accent: #770000;
+            --warning: #9D4404;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url(/images/bg.svg);
+            margin-top: 50px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tagline {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--primary);
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3.5rem;
+            color: #555;
+            font-weight: 400;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .tri-hita-karana {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem auto 3rem;
+            max-width: 1000px;
+        }
+
+        .thk-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgb(249, 249, 249);
+            opacity: 80%;
+            border-radius: 20px;
+            border: 2px solid #e8f5e1;
+            transition: all 0.4s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .thk-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            opacity: 100%;
+            box-shadow: 0 12px 40px rgba(56,80,11,0.1);
+        }
+
+        .thk-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .thk-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--primary);
+        }
+
+        .alert-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-top: 3rem;
+            animation: pulse 2.5s infinite;
+            box-shadow: 0 8px 25px rgba(119,0,0,0.25);
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+        }
+
+        section {
+            padding: 6rem 2.5rem;
+        }
+
+        .section-header {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .stats-section {
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #f8faf6 0%, #ffffff 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #e8f5e1;
+            transition: all 0.4s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-color: var(--secondary);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .gallery-section {
+            background: #f8faf6;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            border: 2px solid #e8f5e1;
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f8faf6 0%, #e8f5e1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .image-placeholder-icon {
+            font-size: 4rem;
+            opacity: 0.4;
+        }
+
+        .flood-section {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flood-section .section-title {
+            color: white;
+        }
+
+        .flood-section .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .flood-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .flood-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+        }
+
+        .flood-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .flood-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .flood-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .flood-card p {
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .harmoni-section {
+            background: white;
+        }
+
+        .harmoni-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .harmoni-item {
+            background: #f8faf6;
+            padding: 3rem;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 2.5rem;
+            transition: all 0.4s;
+            border: 2px solid #e8f5e1;
+        }
+
+        .harmoni-item:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateX(8px);
+        }
+
+        .harmoni-letter-box {
+            width: 90px;
+            height: 90px;
+            background: var(--primary);
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(56,80,11,0.25);
+        }
+
+        .harmoni-content h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .harmoni-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .action-list {
+            list-style: none;
+        }
+
+        .action-list li {
+            padding: 0.8rem 0 0.8rem 2.2rem;
+            position: relative;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .action-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary);
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-harmoni-section {
+            background: #f8faf6;
+        }
+
+        .why-harmoni-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid #e8f5e1;
+            transition: all 0.4s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .why-card p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .steps-section {
+            background: white;
+        }
+
+        .steps-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: #f8faf6;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 2.5rem;
+            transition: all 0.4s;
+            border: 2px solid #e8f5e1;
+        }
+
+        .step-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: var(--warning);
+        }
+
+        .step-number {
+            width: 90px;
+            height: 90px;
+            background: var(--warning);
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(157,68,4,0.25);
+        }
+
+        .step-content h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-details {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .step-details h4 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .step-details ul {
+            list-style: none;
+        }
+
+        .step-details li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .step-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warning);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .step-tip {
+            background: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .step-tip strong {
+            color: var(--warning);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .comparison-section {
+            background: #f8faf6;
+        }
+
+        .comparison-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .comparison-card {
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            transition: all 0.4s;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .comparison-card.negative {
+            background: var(--accent);
+        }
+
+        .comparison-card.positive {
+            background: var(--primary);
+        }
+
+        .comparison-card h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 1.2rem 0;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            line-height: 1.7;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-section {
+            width: 100%;
+            background-image: url(images/bgh.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            margin-top: 100px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(29, 86, 21, 0.463);
+            border-radius: 20px;
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.8rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(56,80,11,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56,80,11,0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+        }
+
+        footer strong {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin: 0.6rem 0;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .harmoni-item,
+            .step-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .harmoni-letter-box,
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tri-hita-karana {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo"> HARMONI</div>
+            <ul class="nav-links">
+                <li><a href="#masalah">Masalah</a></li>
+                <li><a href="#galeri">Dampak</a></li>
+                <li><a href="#solusi">Solusi</a></li>
+                <li><a href="#langkah">Langkah</a></li>
+                <li><a href="#aksi">Aksi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-tagline">Realisasi Tri Hita Karana</div>
+            <h1>Solusi Holistik Krisis Sampah Bali</h1>
+            <p class="hero-subtitle">Mengatasi darurat sampah dan banjir dengan pendekatan harmonis antara manusia, alam, dan Tuhan</p>
+            
+            <div class="tri-hita-karana">
+                <div class="thk-item">
+                    <span class="thk-icon">🙏</span>
+                    <div class="thk-label">Parahyangan<br>(Hubungan dengan Tuhan)</div>
+                </div>
+                <div class="thk-item">
+                    <span class="thk-icon">🌿</span>
+                    <div class="thk-label">Palemahan<br>(Hubungan dengan Alam)</div>
+                </div>
+                <div class="thk-item">
+                    <span class="thk-icon">🤝</span>
+                    <div class="thk-label">Pawongan<br>(Hubungan dengan Sesama)</div>
+                </div>
+            </div>
+
+           <a href="https://www.baliprov.go.id/web/tpa-suwung-ditargetkan-tutup-desember-2025-klh-bali-matangkan-langkah-teknis/"> <div class="alert-badge">⚠️ TPA SUWUNG AKAN DITUTUP</div></a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section" id="masalah">
+        <div class="section-header">
+            <h2 class="section-title">📊 Fakta Krisis Sampah Bali</h2>
+            <p class="section-subtitle">Data terkini yang menunjukkan urgensi penanganan sampah di Bali</p>
+        </div>
+        <div class="stats-container">
+            <a style="text-decoration: none;" href="https://denpasar.kompas.com/read/2025/08/26/200623178/problem-sampah-di-bali-mendesak-sampah-harian-3400-ton-hanya-29-persen?utm_source=chatgpt.com">
+                 <div class="stat-box">
+                <span class="stat-number">3.400</span>
+                <div class="stat-label">Ton sampah per hari di Bali</div>
+            </div>
+            </a>
+            <a style="text-decoration: none;" href="
+            https://www.baliprov.go.id/web/ketok-tularkan-kesadaran-pemilahan-sampah-ibu-putri-koster-nyobiahang-program-psbs-padas-kepada-tp-pkk-dan-pakis-di-tabanan/?utm
+            ">
+             <div class="stat-box">
+                <span class="stat-number">60%</span>
+                <div class="stat-label">Berasal dari rumah tangga</div>
+            </div>
+            </a>
+           <a style="text-decoration: none;" href="
+           https://e-journal.unmas.ac.id/index.php/jeco/article/view/1763/1403">
+            <div class="stat-box">
+                <span class="stat-number">2.4</span>
+                <div class="stat-label">KG saat upacara hari suci</div>
+            </div>
+             </a>
+           <a style="text-decoration: none;" href="https://shunwaste.com/article/why-is-bali-so-polluted?utm">
+            <div class="stat-box">
+                <span class="stat-number">±60%</span>
+                <div class="stat-label">Sungai di Bali tercemar sampah</div>
+            </div>
+           </a>
+            
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="galeri">
+        <div class="section-header">
+            <h2 class="section-title">📸 Dokumentasi Krisis Sampah Bali</h2>
+            <p class="section-subtitle">Realita kondisi sampah dan dampaknya di Bali</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                    <img style="width: 450px;" src="/images/7.svg" alt="">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                  <img style="width: 450px;" src="/images/8.svg" alt="">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="image-placeholder">
+                   <img style="width: 450px;" src="/images/9.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flood Impact -->
+    <section class="flood-section">
+        <div class="section-header">
+            <h2 class="section-title">💧 Dampak Krisis Sampah: Banjir di Bali</h2>
+            <p class="section-subtitle">Sampah yang tidak terkelola menyumbat saluran air dan memperparah bencana banjir</p>
+        </div>
+        <div class="flood-grid">
+            <div class="flood-card">
+                <span class="flood-icon">🌊</span>
+                <h3>Sungai Tersumbat Sampah</h3>
+                <p>Sampah plastik, organik, dan upakara menumpuk di sungai-sungai Bali, menyumbat aliran air dan menyebabkan luapan saat hujan deras. Sedimentasi sampah mengurangi kapasitas tampung sungai hingga 40%.</p>
+            </div>
+            <div class="flood-card">
+                <span class="flood-icon">🏘️</span>
+                <h3>Pemukiman Terendam</h3>
+                <p>Ribuan rumah warga di Denpasar, Badung, dan Gianyar terendam banjir akibat sistem drainase yang tersumbat sampah. Air banjir membawa sampah dan limbah yang mengancam kesehatan masyarakat.</p>
+            </div>
+            <div class="flood-card">
+                <span class="flood-icon">🚫</span>
+                <h3>Infrastruktur Rusak</h3>
+                <p>Gorong-gorong, saluran drainase, dan sistem pengairan tersumbat sampah. Biaya pembersihan dan perbaikan infrastruktur akibat sampah mencapai miliaran rupiah setiap tahunnya.</p>
+            </div>
+            <div class="flood-card">
+                <span class="flood-icon">🌴</span>
+                <h3>Pariwisata Terdampak</h3>
+                <p>Banjir dan sampah yang berserakan merusak citra Bali sebagai destinasi wisata premium. Pantai-pantai tercemar sampah kiriman dari sungai yang meluap saat banjir.</p>
+            </div>
+            <div class="flood-card">
+                <span class="flood-icon">💰</span>
+                <h3>Kerugian Ekonomi</h3>
+                <p>Banjir menyebabkan kerugian ekonomi hingga ratusan miliar rupiah per tahun. Bisnis tutup, hasil panen rusak, dan aktivitas ekonomi lumpuh saat bencana terjadi.</p>
+            </div>
+            <div class="flood-card">
+                <span class="flood-icon">🏥</span>
+                <h3>Ancaman Kesehatan</h3>
+                <p>Air banjir yang tercemar sampah dan limbah menyebarkan penyakit seperti diare, leptospirosis, dan infeksi kulit. Anak-anak dan lansia paling rentan terdampak.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HARMONI Solution -->
+    <section class="harmoni-section" id="solusi">
+        <div class="section-header">
+            <h2 class="section-title">🌱 Konsep HARMONI: Solusi Holistik</h2>
+            <p class="section-subtitle">Pendekatan komprehensif mewujudkan Tri Hita Karana untuk mengatasi krisis sampah dan mencegah banjir di Bali</p>
+        </div>
+
+        <div class="harmoni-grid">
+            <div class="harmoni-item">
+                <div class="harmoni-letter-box">H</div>
+                <div class="harmoni-content">
+                    <h3>Hormati Alam dengan Kelola Sampah</h3>
+                    <p>Kembali pada kesadaran spiritual bahwa alam adalah pemberian Maha Pencipta yang harus dijaga dengan sungguh-sungguh.</p>
+                    <ul class="action-list">
+                        <li>Lakukan pemilahan sampah organik dan anorganik sejak dari rumah</li>
+                        <li>Kurangi penggunaan plastik sekali pakai dalam kehidupan sehari-hari</li>
+                        <li>Hormati lingkungan dengan tidak membuang sampah ke sungai dan selokan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="harmoni-item">
+                <div class="harmoni-letter-box">A</div>
+                <div class="harmoni-content">
+                    <h3>Atur & Kelola Sampah di Rumah Anda</h3>
+                    <p>Setiap keluarga Bali adalah garda terdepan dalam pengelolaan sampah dan pencegahan banjir.</p>
+                    <ul class="action-list">
+                        <li>Sediakan 3 tempat sampah: Organik (hijau), Anorganik (kuning), B3 (merah)</li>
+                        <li>Kompos sampah organik menjadi pupuk berkualitas untuk tanaman</li>
+                        <li>Pisahkan sampah bernilai ekonomi untuk dijual ke bank sampah</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="harmoni-item">
+                <div class="harmoni-letter-box">R</div>
+                <div class="harmoni-content">
+                    <h3>Reduksi Sampah Upakara Jadi Kompos</h3>
+                    <p>Sampah upakara adalah bagian terbesar sampah organik di Bali yang dapat dimanfaatkan.</p>
+                    <ul class="action-list">
+                        <li>Olah bunga dan janur bekas upakara menjadi kompos berkualitas tinggi</li>
+                        <li>Gunakan wadah upakara yang bisa digunakan kembali dan ramah lingkungan</li>
+                        <li>Koordinasi dengan banjar untuk pengelolaan sampah upakara bersama</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="harmoni-item">
+                <div class="harmoni-letter-box">M</div>
+                <div class="harmoni-content">
+                    <h3>Mobilisasi Program Bank Sampah</h3>
+                    <p>Bank sampah adalah solusi ekonomi sirkular yang menguntungkan dan mencegah sampah masuk ke sungai.</p>
+                    <ul class="action-list">
+                        <li>Bergabung dengan bank sampah terdekat di lingkungan atau banjar Anda</li>
+                        <li>Kumpulkan sampah anorganik (botol plastik, kardus, kaleng) untuk dijual</li>
+                        <li>Dapatkan penghasilan tambahan sambil menjaga lingkungan tetap bersih</li>
+                        <li>Bantu cegah sampah masuk ke saluran air dan sungai</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="harmoni-item">
+            <div class="harmoni-letter-box">O</div>
+            <div class="harmoni-content">
+                <h3>Olah sampah jadi kerajinan tangan</h3>
+                <p>Ubah sampah plastik, kertas, dan botol menjadi produk bernilai ekonomi tinggi.</p>
+                <ul class="action-list">
+                    <li>Buat kerajinan tas, dompet, atau aksesori dari plastik bekas</li>
+                    <li>Olah botol plastik menjadi pot tanaman atau dekorasi rumah</li>
+                    <li>Manfaatkan kardus bekas untuk kerajinan kreatif</li>
+                    <li>Ikuti pelatihan daur ulang sampah menjadi produk komersial</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="harmoni-item">
+            <div class="harmoni-letter-box">N</div>
+            <div class="harmoni-content">
+                <h3>Naikkan nilai ekonomi dari bank sampah</h3>
+                <p>Bank sampah mengubah sampah menjadi tabungan dan sumber penghasilan masyarakat.</p>
+                <ul class="action-list">
+                    <li>Daftar dan aktif menjadi nasabah bank sampah di lingkungan Anda</li>
+                    <li>Pilah sampah di rumah: organik, anorganik, dan B3</li>
+                    <li>Setor sampah secara rutin untuk mendapat nilai ekonomi</li>
+                    <li>Dukung pengembangan jaringan bank sampah di Bali</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="harmoni-item">
+            <div class="harmoni-letter-box">I</div>
+            <div class="harmoni-content">
+                <h3>Inspirasi generasi peduli lingkungan sekitar</h3>
+                <p>Generasi muda adalah kunci perubahan untuk masa depan Bali yang bebas sampah.</p>
+                <ul class="action-list">
+                    <li>Ajak anak dan remaja untuk memilah sampah sejak dini</li>
+                    <li>Jadilah role model dengan gaya hidup zero waste</li>
+                    <li>Libatkan sekolah dalam program edukasi lingkungan</li>
+                    <li>Ciptakan gerakan sosial media #BaliBebasSampah</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Why HARMONI Section -->
+    <section class="why-harmoni-section">
+        <div class="section-header">
+            <h2 class="section-title">🌟 Mengapa HARMONI Berbeda?</h2>
+            <p class="section-subtitle">Pendekatan yang mengintegrasikan kearifan lokal dengan solusi modern</p>
+        </div>
+        <div class="why-harmoni-grid">
+            <div class="why-card">
+                <div class="why-icon">🙏</div>
+                <h3>Berbasis Nilai Spiritual</h3>
+                <p>Menjaga alam bukan hanya kewajiban ekologis, tapi juga dharma spiritual sesuai ajaran Tri Hita Karana. Setiap tindakan adalah persembahan kepada Tuhan.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🏛️</div>
+                <h3>Memanfaatkan Kekuatan Adat</h3>
+                <p>Struktur banjar dan desa adat yang kuat di Bali adalah modal sosial luar biasa. HARMONI mengoptimalkan sistem gotong royong dan perarem untuk efektivitas maksimal.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">💡</div>
+                <h3>Solusi Praktis & Terukur</h3>
+                <p>Bukan hanya konsep, tapi langkah konkret yang bisa dilakukan setiap keluarga. Dari komposting rumahan hingga bank sampah dengan dampak ekonomi nyata.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🌊</div>
+                <h3>Cegah Banjir & Bencana</h3>
+                <p>Dengan mengelola sampah dengan baik, kita mencegah penyumbatan saluran air dan mengurangi risiko banjir yang merugikan masyarakat dan ekonomi Bali.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">💰</div>
+                <h3>Manfaat Ekonomi</h3>
+                <p>Bank sampah memberikan penghasilan tambahan, kompos mengurangi biaya pupuk, dan lingkungan bersih meningkatkan nilai properti dan pariwisata.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🌏</div>
+                <h3>Jaga Citra Bali</h3>
+                <p>Bali dikenal dunia sebagai pulau surga. HARMONI memastikan generasi mendatang mewarisi Bali yang indah, bersih, dan berkelanjutan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step by Step Section -->
+    <section class="steps-section" id="langkah">
+        <div class="section-header">
+            <h2 class="section-title">📋 Panduan Praktis: Mulai dari Rumah</h2>
+            <p class="section-subtitle">Langkah mudah yang bisa Anda lakukan hari ini untuk mengatasi krisis sampah</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Siapkan Sistem Pemilahan Sampah</h3>
+                    <p>Mulai dengan menyediakan 3 tempat sampah berbeda di rumah Anda untuk memisahkan sampah sejak awal.</p>
+                    <div class="step-details">
+                        <h4>Yang Anda Butuhkan:</h4>
+                        <ul>
+                            <li>Tempat sampah hijau untuk organik (sisa makanan, daun, bunga)</li>
+                            <li>Tempat sampah kuning untuk anorganik (plastik, kertas, kaleng)</li>
+                            <li>Tempat sampah merah untuk B3 (baterai, lampu, obat kadaluarsa)</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Tips Praktis:</strong>
+                        Letakkan tempat sampah di tempat strategis seperti dapur dan ruang keluarga agar mudah diakses semua anggota keluarga.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Mulai Pengomposan Rumahan</h3>
+                    <p>Ubah sampah organik menjadi pupuk berkualitas tinggi untuk tanaman Anda. 70% sampah rumah tangga adalah organik yang bisa dikompos!</p>
+                    <div class="step-details">
+                        <h4>Cara Membuat Kompos Sederhana:</h4>
+                        <ul>
+                            <li>Siapkan wadah komposter atau buat lubang di halaman</li>
+                            <li>Masukkan sampah organik (hindari daging dan tulang)</li>
+                            <li>Tambahkan tanah dan EM4/bioaktivator</li>
+                            <li>Aduk setiap 3-5 hari, tunggu 3-4 minggu hingga matang</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Manfaat:</strong>
+                        Kompos matang bisa menggantikan pupuk kimia dan menghemat pengeluaran berkebun hingga 50%.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Bergabung dengan Bank Sampah</h3>
+                    <p>Sampah anorganik yang bersih bisa dijual dan memberikan penghasilan tambahan untuk keluarga Anda.</p>
+                    <div class="step-details">
+                        <h4>Jenis Sampah yang Bisa Dijual:</h4>
+                        <ul>
+                            <li>Botol plastik (PET, HDPE): Rp 3.000-5.000/kg</li>
+                            <li>Kertas dan kardus: Rp 1.500-2.500/kg</li>
+                            <li>Kaleng aluminium: Rp 15.000-20.000/kg</li>
+                            <li>Botol kaca: Rp 500-1.000/kg</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Potensi Penghasilan:</strong>
+                        Keluarga rata-rata bisa menghasilkan Rp 50.000-150.000 per bulan dari bank sampah sambil menjaga lingkungan!
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Kurangi Penggunaan Plastik Sekali Pakai</h3>
+                    <p>Plastik adalah penyumbang terbesar sampah yang mencemari sungai dan laut Bali.</p>
+                    <div class="step-details">
+                        <h4>Alternatif Mudah:</h4>
+                        <ul>
+                            <li>Bawa tas belanja sendiri saat berbelanja</li>
+                            <li>Gunakan botol minum isi ulang, bukan kemasan sekali pakai</li>
+                            <li>Hindari sedotan plastik, gunakan sedotan stainless/bambu</li>
+                            <li>Pilih produk dengan kemasan minimal atau ramah lingkungan</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Dampak Nyata:</strong>
+                        Dengan menghindari plastik sekali pakai, satu keluarga bisa mengurangi hingga 500 item plastik per bulan!
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Aktif di Komunitas & Banjar</h3>
+                    <p>Kekuatan gotong royong Bali adalah modal terbesar untuk mengatasi krisis sampah secara massal.</p>
+                    <div class="step-details">
+                        <h4>Aksi Bersama yang Bisa Dilakukan:</h4>
+                        <ul>
+                            <li>Ikut gotong royong pembersihan sungai dan saluran air bulanan</li>
+                            <li>Dukung pembuatan TPS3R tingkat banjar</li>
+                            <li>Sosialisasikan pentingnya pemilahan sampah ke tetangga</li>
+                            <li>Ajukan perarem tentang sanksi pembuangan sampah sembarangan</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Ingat:</strong>
+                        Perubahan besar dimulai dari lingkaran kecil. Satu banjar yang bersih akan menginspirasi banjar lainnya!
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Olah Sampah Jadi Kerajinan Tangan</h3>
+                    <p>Ubah sampah plastik, kertas, dan botol menjadi produk bernilai ekonomi tinggi.</p>
+                    <div class="step-details">
+                        <h4>Ide Kerajinan Daur Ulang:</h4>
+                        <ul>
+                            <li>Membuat kerajinan tas, dompet, atau aksesori dari plastik bekas</li>
+                            <li>Mengolah botol plastik menjadi pot tanaman atau dekorasi rumah</li>
+                            <li>Memanfaatkan kardus bekas untuk kerajinan kreatif</li>
+                            <li>Mengikuti pelatihan daur ulang sampah menjadi produk komersial</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Peluang Usaha:</strong>
+                        Kerajinan daur ulang bisa dijual sebagai souvenir khas Bali yang ramah lingkungan dengan harga jual menarik!
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <h3>Naikkan Nilai Ekonomi dari Bank Sampah</h3>
+                    <p>Bank sampah mengubah sampah menjadi tabungan dan sumber penghasilan masyarakat.</p>
+                    <div class="step-details">
+                        <h4>Cara Maksimalkan Bank Sampah:</h4>
+                        <ul>
+                            <li>Mendaftar dan aktif sebagai nasabah bank sampah di lingkungan sekitar</li>
+                            <li>Memilah sampah di rumah: organik, anorganik, dan B3</li>
+                            <li>Menyetor sampah secara rutin untuk memperoleh nilai ekonomi</li>
+                            <li>Mendukung pengembangan jaringan bank sampah di Bali</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Dampak Ganda:</strong>
+                        Dengan bank sampah, Anda mendapat penghasilan tambahan sekaligus berkontribusi menjaga kebersihan Bali!
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">8</div>
+                <div class="step-content">
+                    <h3>Inspirasi Generasi Peduli Lingkungan</h3>
+                    <p>Generasi muda adalah kunci perubahan untuk masa depan Bali yang bebas sampah.</p>
+                    <div class="step-details">
+                        <h4>Cara Menginspirasi Generasi Muda:</h4>
+                        <ul>
+                            <li>Mengajak anak dan remaja memilah sampah sejak dini</li>
+                            <li>Menjadi teladan dengan menerapkan gaya hidup minim sampah (zero waste)</li>
+                            <li>Melibatkan sekolah dalam program edukasi lingkungan</li>
+                            <li>Menciptakan gerakan kampanye media sosial #BaliBebasSampah</li>
+                        </ul>
+                    </div>
+                    <div class="step-tip">
+                        <strong>Investasi Masa Depan:</strong>
+                        Anak-anak yang diajarkan peduli lingkungan hari ini akan menjadi penjaga Bali yang bertanggung jawab di masa depan!
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <h2 class="section-title">⚖️ Bali Tanpa vs Dengan HARMONI</h2>
+            <p class="section-subtitle">Bandingkan dampak jika kita tidak bertindak versus jika kita menerapkan HARMONI</p>
+        </div>
+        <div class="comparison-grid">
+            <div class="comparison-card negative">
+                <h3> Tanpa HARMONI</h3>
+                <ul class="comparison-list">
+                    <li>TPA Suwung overload dan ditutup tanpa solusi alternatif</li>
+                    <li>Sampah menumpuk di sungai dan saluran, banjir makin sering</li>
+                    <li>Pariwisata menurun, citra Bali sebagai surga dunia rusak</li>
+                    <li>Biaya kesehatan meningkat akibat penyakit dari lingkungan kotor</li>
+                    <li>Generasi mendatang mewarisi Bali yang tercemar</li>
+                    <li>Konflik sosial meningkat akibat masalah sampah</li>
+                </ul>
+            </div>
+            <div class="comparison-card positive">
+                <h3> Dengan HARMONI</h3>
+                <ul class="comparison-list">
+                    <li>Sampah berkurang 50-70% dengan komposting dan bank sampah</li>
+                    <li>Sungai dan saluran bersih, banjir berkurang drastis</li>
+                    <li>Pariwisata berkelanjutan, Bali tetap menjadi destinasi impian</li>
+                    <li>Masyarakat mendapat penghasilan tambahan dari bank sampah</li>
+                    <li>Lingkungan bersih, sehat, dan harmonis untuk semua</li>
+                    <li>Bali menjadi role model pengelolaan sampah berbasis budaya</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="aksi">
+        <div class="cta-content">
+            <h2>🌴 Mari Bersama Selamatkan Bali</h2>
+            <p>Setiap tindakan kecil Anda hari ini adalah warisan besar untuk anak cucu kita. Bali yang bersih, harmonis, dan berkelanjutan dimulai dari rumah Anda.</p>
+            
+            <div class="impact-stats">
+                <div class="impact-item">
+                    <span class="impact-number">1 Keluarga</span>
+                    <div class="impact-label">Dapat kurangi 2 kg sampah/hari</div>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">1 Banjar</span>
+                    <div class="impact-label">Dapat cegah banjir lokal</div>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">1 Desa</span>
+                    <div class="impact-label">Dapat kelola 10 ton/bulan</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#langkah" class="btn btn-primary">📋 Lihat Panduan Lengkap</a>
+                <a href="#solusi" class="btn btn-secondary">🌱 Pelajari HARMONI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem;">HARMONI - Solusi Krisis Sampah Bali</strong>
+            <p style="font-size: 1rem; margin-bottom: 1rem;">Realisasi Tri Hita Karana: Parahyangan • Palemahan • Pawongan</p>
+            <p style="opacity: 0.7; font-size: 0.95rem;">Selamatkan Bali dari krisis sampah dan banjir. Mulai dari diri sendiri, keluarga, dan komunitas.</p>
+            <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">© 2025 HARMONI Initiative. Mari bersama wujudkan Bali yang bersih dan berkelanjutan.</p>
+        </div>
+    </footer>
+</body>
+</html>
